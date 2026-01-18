@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-// If already logged in, redirect to employee page
+
 if (isset($_SESSION['user_id'])) {
     header("Location: employee.php");
     exit;
 }
 
-// XSS prevention
+
 function h($v) {
     return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');
 }
 
-// Toast message
+
 $toast = $_SESSION['toast'] ?? null;
 unset($_SESSION['toast']);
 ?>
@@ -53,7 +53,7 @@ body {
 </head>
 <body>
 
-<!-- TOAST -->
+
 <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:1080;">
 <?php if ($toast): ?>
     <?php $bgClass = "text-bg-" . ($toast['type'] ?? 'info'); ?>
